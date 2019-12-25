@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tool.general.excel.dao.mapper.ExportTemplateInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.tool.general.excel.dao.bean.ExportTemplateInfo">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="order_by_exp" property="orderByExp" jdbcType="VARCHAR" javaType="String"/>
+        <result column="platform_id" property="platformId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="db_code" property="dbCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="table_names" property="tableNames" jdbcType="VARCHAR" javaType="String"/>
+        <result column="template_id" property="templateId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="table_columns" property="tableColumns" jdbcType="VARCHAR" javaType="String"/>
+        <result column="template_title" property="templateTitle" jdbcType="VARCHAR" javaType="String"/>
+        <result column="export_file_name" property="exportFileName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="query_condition" property="queryCondition" jdbcType="VARCHAR" javaType="String"/>
+        <result column="export_fields_exp" property="exportFieldsExp" jdbcType="VARCHAR" javaType="String"/>
+        <result column="template_child_id" property="templateChildId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="template_file_url" property="templateFileUrl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="template_file_local_path" property="templateFileLocalPath" jdbcType="VARCHAR"
+                javaType="String"/>
+        <result column="page_size" property="pageSize" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="download_url_expire" property="downloadUrlExpire" jdbcType="BIGINT" javaType="Long"/>
+        <result column="template_type" property="templateType" jdbcType="TINYINT" javaType="Integer"/>
+        <result column="template_status" property="templateStatus" jdbcType="TINYINT" javaType="Integer"/>
+        <result column="template_refresh_flag" property="templateRefreshFlag" jdbcType="TINYINT" javaType="Integer"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,order_by_exp,platform_id,db_code,table_names,template_id
+        ,table_columns,template_title,export_file_name,query_condition,export_fields_exp
+        ,template_child_id,template_file_url,template_file_local_path,page_size,download_url_expire,template_type
+        ,template_status,template_refresh_flag,create_time,update_time
+    </sql>
+
+
+    <!-- 根据模板ID查询模板 -->
+    <select id="getByTemplateId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM export_template_info
+        WHERE
+        template_id = #{templateId,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 更新模板文件信息 -->
+    <update id="updateTemplateFileMsg">
+        UPDATE  export_template_info
+        SET
+        template_refresh_flag = #{templateRefreshFlag,jdbcType=TINYINT},
+        template_file_local_path = #{templateFileLocalPath,jdbcType=VARCHAR}
+        WHERE
+        template_id = #{templateId,jdbcType=VARCHAR}
+    </update>
+
+</mapper>
