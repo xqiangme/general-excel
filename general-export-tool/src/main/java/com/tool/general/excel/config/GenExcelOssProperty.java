@@ -15,31 +15,26 @@ public class GenExcelOssProperty {
     /**
      * OSS accessid
      */
-    @Value("${oss.accessId:}")
     private String accessId;
 
     /**
      * oss secret
      */
-    @Value("${oss.accessKey:}")
     private String accessKey;
 
     /**
      * oss endpoint
      */
-    @Value("${oss.endpoint:}")
     private String endpoint;
 
     /**
      * oss bucket
      */
-    @Value("${oss.bucket:}")
     private String bucket;
 
     /**
      * 默认文件存储前缀
      */
-    @Value("${oss.defaultDir:/}")
     private String defaultDir;
 
 
