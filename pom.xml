@@ -28,7 +28,7 @@
         <redisson.version>3.11.5</redisson.version>
         <lombok.version>1.16.4</lombok.version>
         <commons-lang3.version>3.4</commons-lang3.version>
-        <fastjson.version>1.2.39</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <hutool-all.version>5.0.7</hutool-all.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <ognl.version>2.7.3</ognl.version>
